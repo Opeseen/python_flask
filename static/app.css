@@ -1,0 +1,12 @@
+body{
+  background-color: chartreuse;
+  background-image: url(./aws.jpg);
+}
+
+p{
+  color:blue;
+}
+
+h1,h2{
+  color:chartreuse;
+}
