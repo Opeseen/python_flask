@@ -1,6 +1,6 @@
 body{
   background-color: chartreuse;
-  background-image: url(./aws.jpg);
+  /* background-image: url(./aws.jpg); */
 }
 
 p{
@@ -8,5 +8,5 @@ p{
 }
 
 h1,h2{
-  color:chartreuse;
+  color:brown;
 }
