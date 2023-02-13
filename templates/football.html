@@ -2,5 +2,12 @@
 
 {% block main %}
   <h1>Football Sport is Great!!!</h1>
-  <p>{{ message }}</p>
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+     {% for message in messages %}
+       {{ message }}
+      {% endfor %}
+  {% endif %}
+{% endwith %}
+  <!-- <p>{{ message }}</p> -->
 {% endblock main %}

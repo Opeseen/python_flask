@@ -1,6 +1,8 @@
-from flask import Flask, render_template, request;
+from flask import Flask, render_template, request, flash;
 
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = 'any secret string'
 
 @app.route('/',methods = ['GET','POST'])
 def home():
@@ -10,7 +12,9 @@ def home():
         username = request.form['Username']
         password = request.form['Password']
         if username == 'Opeyemi' and password == 'jembe':
-            return render_template('football.html',message = 'Login Successful')
+            flash('Login Successful')
+            return render_template('football.html')
+            # return render_template('football.html',message = 'Login Successful')
         else:
             error_meassage = 'Wrong User Crendentials!'
             return render_template('index.html', message = error_meassage)
