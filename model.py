@@ -17,12 +17,16 @@ def check_passwd(username):
     connection = sqlite3.connect('flask_db.db', check_same_thread=False)
     cursor = connection.cursor()
     cursor.execute(f"SELECT password FROM users WHERE username = '{username}' ORDER BY ID DESC")
-    password = cursor.fetchone()[0]
+    password = cursor.fetchone()
 
-    connection.commit()
-    cursor.close()
-    connection.close()
-    return password
+    if password is None:
+        cursor.close()
+        connection.close()
+        return 'Wrong Password'
+    else:
+        cursor.close()
+        connection.close()
+        return ''.join(password)
    
 
 def signup(username,password, favorite_color):
