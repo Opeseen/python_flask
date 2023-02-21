@@ -22,10 +22,10 @@ def home():
 def login():
     if request.method == 'POST':
         session.pop('username',None)
-        areYouUser = request.form['Username']
+        areYouUser = request.form['Username'].title()
         password = request.form['Password']
-        passwd = model.check_passwd(areYouUser)
-        if password == passwd:
+        db_passwd = model.check_passwd(areYouUser)
+        if password == db_passwd:
             session['username'] = areYouUser
             return redirect(url_for('home'))
         else:
