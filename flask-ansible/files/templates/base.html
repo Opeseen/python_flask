@@ -1,0 +1,78 @@
+<html>
+  <head>
+
+    <!-- General Settings -->
+    <meta charset="utf-8">
+    <meta http-equiv="content-language" content="en-us">
+
+    <!-- Meta Tags -->
+    <title>{% block title %}WELCOME{% endblock %}</title>
+    <meta name="description" content="description">
+
+    <!-- Static Assets -->
+    <link rel="icon" href="logo.png" sizes="32x32" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="static/app.css" />
+
+  </head>
+  <body>
+    <!-- Page Wrapper -->
+    <div class="wrapper">
+      <!-- Header -->
+      <div class="header">
+        <!-- Logo -->
+        <a class="logo" href="/">
+          <img src="static/logo.png" alt="Logo" />
+        </a>
+        <!-- Navigation -->
+        <ul class="menu">
+
+          <li> <a href="/">Home</a> </li>
+          
+          <li class="">
+            <a href="/signup">Signup</a>
+          </li>
+
+          <li class="">
+            <a href="/login">Login</a>
+          </li>
+
+          <li class="">
+            <a href="logout">Logout</a>
+          </li>
+
+        </ul>
+
+        <div class="clear"></div>
+      </div>
+
+      <!-- Page-Specific Content -->
+      <div class="content">
+ 
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+              {% for category, message in messages %}
+                {% if category == 'error' %}
+                  <p style="color: red; text-align:center;">{{message}}</p>
+                  <br>
+                {% else %}
+                  <p style="color: green; text-align: center;">{{message}}</p>
+                  <br>
+                {% endif %}
+              {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <!-- Opening text body section -->
+        {% block content %}
+      
+        {% endblock %}
+        <!-- Closing text body section -->
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <div class="copyright">Copyright | Opeyemi | All Rights Reserved</div>
+      </div>
+    </div>
+  </body>
+</html>
