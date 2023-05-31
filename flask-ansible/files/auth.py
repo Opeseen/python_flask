@@ -1,19 +1,34 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for;
+from flask import Blueprint, render_template, request, flash, redirect, url_for, session,g;
 from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash;
 from . import db;
+from flask_login import login_user,login_required,logout_user,current_user;
+import time;
 
 auth = Blueprint('auth',__name__)
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
-    data = request.form
-    print(data)
-    return render_template('login.html')
+    if request.method == 'POST':
+        Username = request.form.get('username').title().strip()
+        Password = request.form.get('password')
 
+        user = User.query.filter_by(username=Username).first()
+        if user:
+            if check_password_hash(user.password, Password):
+                flash('Login Successfully..', category='success')
+                login_user(user,remember=True)
+                return render_template('dashboard.html')
+            else:
+                flash('Wrong password entered..', category='error')
+        else:
+            flash('Username does not exists',category='error')
+    return render_template('login.html')
+    
 
 @auth.route('/logout')
 def logout():
+    logout_user()
     return render_template('logout.html')
 
 @auth.route('/signup', methods=['GET', 'POST'])
@@ -43,7 +58,8 @@ def signup():
         else:
             new_user = User(email=email,first_name=FirstName,username=Username,last_name=LastName,tosAgreement=tosAgreement,password=generate_password_hash(Password, method='sha256'))
             db.session.add(new_user)
-            db.session.commit() 
+            db.session.commit()
+            login_user(user,remember=True)
             flash('Account Ctreated Successfully!',category='success')
             return redirect(url_for('views.home'))
         
