@@ -18,7 +18,7 @@ def login():
             if check_password_hash(user.password, Password):
                 flash('Login Successfully..', category='success')
                 login_user(user,remember=True)
-                return render_template('dashboard.html')
+                return render_template('dashboard.html',message=user.first_name)
             else:
                 flash('Wrong password entered..', category='error')
         else:
