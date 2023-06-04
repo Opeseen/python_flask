@@ -1,0 +1,31 @@
+{% extends 'base.html' %} 
+{% block title %}Record PO{% endblock %}
+
+{% block content %}
+  <h2>Start recording your PO..</h2>
+  <h3 style="text-align: center;">It's easy and only takes a few seconds</h3>
+  <div class="formWrapper">
+      <form id="accountCreate" action="/create_po" method="POST">
+          <div class="formError"></div>
+          <div class="inputWrapper">
+            <div class="inputLabel">PO Number</div>
+            <input type="text" name="po_num" placeholder="" required />
+          </div>
+          <div class="inputWrapper">
+            <div class="inputLabel">Invoice Number</div>
+            <input type="text" name="inv_num" placeholder="" required />
+          </div>
+          <div class="inputWrapper">
+              <div class="inputLabel">Invoice Date</div>
+              <input type="date" name="inv_date" placeholder="" required />
+            </div>
+          <div class="inputWrapper">
+            <div class="inputLabel">Due Date</div>
+            <input type="date" name="due_date" placeholder="" required />
+          </div>
+          <div class="inputWrapper ctaWrapper">
+            <button type="submit" class="cta blue">Create PO</button>
+          </div>
+        </form>
+  </div>
+{% endblock %}
