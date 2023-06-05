@@ -12,7 +12,12 @@ def home():
 @views.route('/dashboard')
 def dashboard():
     record = Record.query.all()
-    return render_template('dashboard.html', data=record)
+    df = pd.read_csv(r"./files/Sales_invoice_list.csv")
+    w = df.rowone
+    x = df.rowtwo
+    y = df.rowthree
+    z = df.rowfour
+    return render_template('dashboard.html', data1=w, data2=x, data3=y, data4=z, zip=zip)
 
 
 
