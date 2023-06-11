@@ -1,0 +1,42 @@
+{% extends 'base.html' %} 
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <h3 style="color: brown; text-align: center;">Welcome to Mundial PO dashboard</h3>
+
+    <table class="table table-fluid" id="myTable">
+      <thead>
+        <tr>
+          <th>PO NUMBER</th>
+          <th>INVOICE NUMBER</th>
+          <th>INVOICE DATE</th>
+          <th>DUE DATE</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row1,row2,row3,row4 in zip(data1,data2,data3,data4) %}
+              <tr>
+                <td>{{row1}}</td>
+                <td>{{row2}}</td>
+                <td>{{row3}}</td>
+                <td>{{row4}}</td>
+              </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}
+
+
+<!-- 
+{% for row in data %}
+<tr>
+  <td>{{row['po_number']}}</td>
+  <td>{{row['invoice_number']}}</td>
+  <td>{{row['invoice_date']}}</td>
+  <td>{{row['due_date']}}</td>
+</tr>
+{% endfor %} -->
