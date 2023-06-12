@@ -15,10 +15,10 @@ def create_po():
 
         try:
             invoice.insert_one({'po_number':PO_NUM, 'invoice_number':INV_NUM, 'invoice_date':INV_DATE, 'due_date':DUE_DATE})
-            flash('PO Details Successfully Added...',category='success')
+            flash(f'PO {PO_NUM} Successfully Added...',category='success')
             return redirect(url_for('auth.create_po'))
         except:
-            flash('There was an error while adding the PO...',category='error')
+            flash(f'There was an error while adding the PO {PO_NUM}...',category='error')
     
     return render_template('create_po.html')
 
