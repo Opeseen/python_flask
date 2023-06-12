@@ -1,35 +1,24 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy;
-import os;
+from pymongo import MongoClient, errors;
 
-baseDir = os.path.abspath(os.path.dirname(__file__))
+try:
+    client = MongoClient('localhost',27017)
+    db = client.bookstore
+    invoice = db.invoice
+    client.server_info()
 
-db = SQLAlchemy()
+    def create_app():
+        app = Flask(__name__)
+        app.config['SECRET_KEY'] = 'admin'
+        
+        from .views import views
+        from .auth import auth
 
-DB_NAME = "database.db3"
+        app.register_blueprint(views,url_prefix='/')
+        app.register_blueprint(auth,url_prefix='/')
 
-def create_app():
-    app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'admin'
-    # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(baseDir, 'database.db3')
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://Horpeyemi:yomex5055@localhost/student'
-    db.init_app(app)
+        return app
 
-    from .views import views
-    from .auth import auth
-
-    app.register_blueprint(views,url_prefix='/')
-    app.register_blueprint(auth,url_prefix='/')
-
-    from .models import User,Record
-
-    # create_database(app)
-
-    return app
-
-def create_database(app):
-    with app.app_context():
-        db.create_all()
-        print('Database Created') 
-
-
+except errors.ServerSelectionTimeoutError as err:
+    print('Connection Error')
+    print(err)
