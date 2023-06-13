@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+{% block title %}PO Dashboard - Mundial Engineering{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <h3 style="color: brown; text-align: center;">Welcome to Mundial PO Dashboard</h3>
+
+    <table class="table table-fluid" id="myTable">
+      <thead>
+        <tr>
+          <th>PO NUMBER</th>
+          <th>INVOICE NUMBER</th>
+          <th>INVOICE DATE</th>
+          <th>DUE DATE</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for rows in getAll() %}
+        <tr>
+          <td>{{rows['po_number']}}</td>
+          <td>{{rows['invoice_number']}}</td>
+          <td>{{rows['invoice_date']}}</td>
+          <td>{{rows['due_date']}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="inputWrapper ctaWrapper">
+    <a class="cta green" href="/download">
+      Download to csv
+    </a>
+  </div >
+
+{% endblock %}
