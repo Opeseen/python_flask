@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Static Assets -->
-    <link rel="icon" href="logo.png" sizes="32x32" type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static',filename='title_logo.png') }}" sizes="32x32" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="static/app.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -32,23 +32,17 @@
       <div class="header">
         <!-- Logo -->
         <a class="logo" href="/">
-          <img src="static/logo.png" alt="Logo" />
+          <img src="static/mundial_logo.png" alt="Logo" />
         </a>
         <!-- Navigation -->
         <ul class="menu">
 
-          <li> <a href="/">Home</a> </li>
-          
+          <li> <a href="/">HOME</a> </li>
           <li class="">
-            <a href="/signup">Signup</a>
+            <a href="/dashboard">DASHBOARD</a>
           </li>
-
           <li class="">
-            <a href="/login">Login</a>
-          </li>
-
-          <li class="">
-            <a href="/dashboard">Dashboard</a>
+            <a href="/create_po">CREATE PO</a>
           </li>
           
         </ul>
