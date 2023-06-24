@@ -129,6 +129,30 @@ body.index .blurb{
   font-size: 14px;
 }
 
+.flashMessages{
+  text-align: center;
+}
+
+.flash{
+  color: #fff;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+  padding: 12px;
+  width: 400px;
+  cursor: pointer;
+}
+
+.flash.green{
+  background-color: #217844 !important;
+}
+
+.flash.red{
+  background-color: #c83737 !important;
+}
+
 .ctaWrapper{
   text-align: center;
 }

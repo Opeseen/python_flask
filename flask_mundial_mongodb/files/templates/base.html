@@ -57,11 +57,15 @@
           {% if messages %}
               {% for category, message in messages %}
                 {% if category == 'error' %}
-                  <p style="color: red; text-align:center;">{{message}}</p>
+                <div class="flashMessages">
+                  <p class="flash red">{{message}}</p>
                   <br>
+                </div>       
                 {% else %}
-                  <p style="color: green; text-align: center;">{{message}}</p>
+                <div class="flashMessages">
+                  <p class="flash green">{{message}}</p>
                   <br>
+                </div>          
                 {% endif %}
               {% endfor %}
           {% endif %}
