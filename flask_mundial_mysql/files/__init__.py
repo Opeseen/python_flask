@@ -11,8 +11,8 @@ DB_NAME = "database.db3"
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'admin'
-    # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(baseDir, 'database.db3')
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://Horpeyemi:yomex5055@localhost/student'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(baseDir, 'database.db3')
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://Horpeyemi:yomex5055@localhost/student'
     db.init_app(app)
 
     from .views import views
@@ -23,7 +23,7 @@ def create_app():
 
     from .models import User,Record
 
-    # create_database(app)
+    create_database(app)
 
     return app
 

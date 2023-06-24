@@ -35,3 +35,47 @@ for x in df.new:
 
 # for row1,row2,row3,row4 in zip(w,x,y,z):
 #     print(row1,row2,row3,row4)
+
+
+
+# @views.route('/dashboard')
+# def dashboard():
+#     record = Record.query.all()
+#     df = pd.read_csv(r"./files/Sales_invoice_list.csv")
+#     w = df.rowone
+#     x = df.rowtwo
+#     y = df.rowthree
+#     z = df.rowfour
+#     return render_template('dashboard.html', data1=w, data2=x, data3=y, data4=z, zip=zip)
+
+
+
+
+# MYSQL Connection Section
+
+# @views.route('/')
+# def home():
+#     return render_template('home.html')
+
+# @views.route('/dashboard')
+# def dashboard():
+#     cursor.execute("SELECT po_number,invoice_number,invoice_date,due_date FROM student.record;")
+#     result = cursor.fetchall()
+#     print(result)
+#     # for row in result:
+    #     print(row[1])
+    #     print(row)
+
+    # return render_template('dashboard.html')
+
+
+
+# <!-- 
+# {% for row1,row2,row3,row4 in zip(data1,data2,data3,data4) %}
+#   <tr>
+#     <td>{{row1}}</td>
+#     <td>{{row2}}</td>
+#     <td>{{row3}}</td>
+#     <td>{{row4}}</td>
+#   </tr>
+# {% endfor %} -->

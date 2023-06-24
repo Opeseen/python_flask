@@ -4,12 +4,12 @@
  */
 
 /* Resets */
-body,p,h1,h2,h3,h4,h5,h6,div,span,header,footer,img,a,a:hover,a:active,a:visited,table,tr,td,th,form,input,button,select,textarea{
+body,h1,h2,div,span,header,footer,img,a,a:hover,a:active,a:visited,table,tr,td,th,form,input,button,select,textarea{
   line-height: 100%;
   padding: 0;
   margin: 0;
-  font-family: sans-serif;
-  font-size: 12px;
+  font-family:"Calibri", sans-serif;
+  font-size: 13px;
   font-weight: normal;
   text-decoration: none;
   color: #1a1a1a;
@@ -74,7 +74,7 @@ body.loggedIn .header ul li.loggedOut{
 }
 
 .header .logo img{
-    width: 50px;
+    width: 200px;
 }
 
 .content {
