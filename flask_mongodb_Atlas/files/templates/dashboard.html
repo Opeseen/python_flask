@@ -1,0 +1,36 @@
+{% extends 'base.html' %} 
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <h3 style="color: brown; text-align: center;">WELCOME TO YOUR NOTE DASHBOARD</h3>
+
+    <table class="table table-fluid" id="myTable">
+      <thead>
+        <tr>
+          <!-- <th>ID</th> -->
+          <th>NOTE</th>
+          <th>NOTE STATUS</th>
+          <th>CREATION DATE</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for rows in data() %}
+              <tr>
+                <!-- <td>{{rows['id']}}</td> -->
+                <td class="noteContent">{{rows['note']}}</td>
+                <td>{{rows['status']}}</td>
+                <td>{{rows['date']}}</td>
+              </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="inputWrapper ctaWrapper">
+    <a class="modifyNote red" href="#">Update/Delete a note</a>
+    <a class="modifyNote green" href="/download"> Download to csv</a>
+  </div>
+
+
+{% endblock %}
