@@ -1,10 +1,9 @@
 from flask import Flask
 from pymongo import MongoClient, errors;
-
-uri = "mongodb+srv://admin:admin1234@atlascluster.bzgngel.mongodb.net/?retryWrites=true&w=majority"
+from .config import connection
 
 try:
-    client = MongoClient(uri)
+    client = MongoClient(connection)
     db = client.NotesDB
     note = db.record
     client.server_info()
