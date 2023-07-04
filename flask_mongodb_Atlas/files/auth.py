@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for;
+from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify;
 from datetime import datetime;
 from . import note;
 from pymongo import errors;
+from . import models
 
 auth = Blueprint('auth',__name__)
 
@@ -26,3 +27,48 @@ def create_po():
     return render_template('create_note.html')
 
 
+@auth.route('/delete',methods=['POST'])
+def delete():
+    if request.method == 'POST':
+        payload = request.json['ids']
+        if payload:
+            payload = payload.split(',')
+            # print(type(payload))
+            print(payload)
+            # print(type(payload.split(',')))
+            # print(payload.split(','))
+            try:
+                for x in payload:
+                    models.deleteNote(x)
+                response = jsonify('<span class=\'flash green\'>Response successfully returned</span>')
+                response.status_code = 200
+                return response
+            except Exception as e:
+                response = jsonify('<span class=\'flash red\'>OOPS, an internal error occur during deletion</span>')
+                response.status_code = 500
+                return response
+            
+        else:
+            response = jsonify('<span class=\'flash red\'>OOPS, something went wrong</span>')
+            response.status_code = 400
+            return response
+
+
+
+
+
+
+
+
+
+    # if request.method == 'POST':
+    #     payload = request.json['ids']
+    #     if payload:
+    #         print(payload)
+    #         response = jsonify('<span class=\'flash green\'>Response successfully returned</span>')
+    #         response.status_code = 200
+	# 		return response
+    #     else:
+    #         response = jsonify('<span class=\'flash red\'>OOPS, something went wrong</span>')
+    #         response.status_code = 400
+	# 		return response
