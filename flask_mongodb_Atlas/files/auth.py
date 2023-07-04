@@ -27,20 +27,17 @@ def create_po():
     return render_template('create_note.html')
 
 
-@auth.route('/delete',methods=['POST'])
+@auth.route('/deleteSelected',methods=['POST'])
 def delete():
     if request.method == 'POST':
         payload = request.json['ids']
         if payload:
             payload = payload.split(',')
-            # print(type(payload))
             print(payload)
-            # print(type(payload.split(',')))
-            # print(payload.split(','))
             try:
-                for x in payload:
-                    models.deleteNote(x)
-                response = jsonify('<span class=\'flash green\'>Response successfully returned</span>')
+                for id in payload:
+                    models.deleteNote(id)
+                response = jsonify('<span class=\'flash green\'>Your note has been successfully deleted</span>')
                 response.status_code = 200
                 return response
             except Exception as e:
