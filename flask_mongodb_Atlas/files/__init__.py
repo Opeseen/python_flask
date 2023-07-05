@@ -5,7 +5,7 @@ from .config import connection
 try:
     client = MongoClient(connection)
     db = client.NotesDB
-    note = db.record
+    noteCollection = db.record
     client.server_info()
 
     def create_app():

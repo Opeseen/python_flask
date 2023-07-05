@@ -1,16 +1,19 @@
-from . import note;
+from . import noteCollection;
 from bson.objectid import ObjectId
 
+# MongoDB delete note function
 def deleteNote(id):
     try:
-        note.delete_one({"_id": ObjectId(id)})
+        noteCollection.delete_one({"_id": ObjectId(id)})
         return True
     except Exception as e:
+        print(e)
         return False
 
+# MongoDB update note function
 def updateNote(id,notes,status):
     try:
-        note.update_one(
+        noteCollection.update_one(
             {
                 "_id":ObjectId(id)
             },

@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, flash, make_response, redirect, url_for, request;
 import pandas as pd;
-from . import note;
+from . import noteCollection;
 from bson.objectid import ObjectId
 
 views = Blueprint('views',__name__)
@@ -14,7 +14,7 @@ def dashboard():
     return render_template('dashboard.html')
 
 def getNote():
-    all_note = note.find()
+    all_note = noteCollection.find()
     return all_note
 
 @views.route('/download')
@@ -34,7 +34,7 @@ def context_processor():
 def updateNotePage():
     queryID = request.args.get('id')
     if queryID:
-        result = note.find({"_id":ObjectId(queryID)})
+        result = noteCollection.find({"_id":ObjectId(queryID)})
         for x in result:
             status = x['status']
             id = x['_id']

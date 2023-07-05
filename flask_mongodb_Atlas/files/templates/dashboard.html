@@ -1,8 +1,7 @@
 {% extends 'base.html' %} 
-{% block title %}Dashboard{% endblock %}
+{% block title %}Dashboard Page{% endblock %}
 
 {% block content %}
-
   <div class="container">
     <h3 style="color: brown; text-align: center;">WELCOME TO YOUR NOTE DASHBOARD</h3>
     <div id="msg" class="flashMessages"></div>
@@ -24,8 +23,8 @@
                 <td>{{rows['status']}}</td>
                 <td>{{rows['date']}}</td>
                 <td>
-                  <div class="inputWrapper ctaWrapper">
-                    <a class="deleteNote red " href="/updateNotePage?id={{rows['_id']}}">Update Note</a>
+                  <div class='delete btn btn-danger'>
+                    <a class="deleteNoteLink red" href="/updateNotePage?id={{rows['_id']}}">Update Note</a>
                   </div>
                 </td>
               </tr>
@@ -34,9 +33,8 @@
     </table>
   </div>
   <div class="inputWrapper ctaWrapper">
-    <a class="modifyNote red" href="#">Update/Delete a note</a>
-    <button class="modifyNote green" id="multiple_delete">Delete Selection</button>
-    <!-- <a class="modifyNote green" href="/download"> Download to csv</a> -->
-  </div>
+    <a class="modifyNote green" href="/download"> Download to csv</a>
+    <button class="modifyNote red" id="deleteNoteBySelection">Delete Selection</button>
 
+  </div>
 {% endblock %}

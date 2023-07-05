@@ -320,9 +320,10 @@ td a, td a:hover, td a:active{
   margin-right: auto;
 }
 
-.deleteNote.red{
-  background-color: red !important;
+.deleteNoteLink.red{
   color: #fff;
-  border-radius: 10px;
   text-transform: uppercase;
+  /* font-weight: bold; */
+  text-align: center;
+  /* font-style: italic */
 }

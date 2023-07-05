@@ -1,3 +1,4 @@
+// Jquery function to delete items through checkbox selecion option
 $(function(){
   $("#check_all").click(function () {
     if ($("input:checkbox").prop("checked")) {
@@ -20,7 +21,7 @@ $(function(){
     }
   });
   
-  $("#multiple_delete").click( () => {
+  $("#deleteNoteBySelection").click( () => {
     let ids = '';
     let comma = '';
     $("input:checkbox[name='row-check']:checked").each(function() {
@@ -29,9 +30,10 @@ $(function(){
     });
     
     if(ids.length > 0){
-      // Confirm box
+      // Bootbox confirm box for delete
       bootbox.confirm({
-        message: "Are you sure you want to delete the selected record.?",
+        title: "ARE YOU SURE YOU WANT TO DELETE THE SELECTED NOTE.?",
+        message:'<p class="text-danger font-weight-bold text-uppercase">Warning: This will delete permanently and cannot be undone</p>',
         buttons:{
           confirm:{
             label: 'Yes',
@@ -48,7 +50,7 @@ $(function(){
             $.ajax({
               type: "POST",
               contentType: 'application/json;charset=UTF-8',
-              url: "/deleteSelected",
+              url: "/deleteNote",
               data: JSON.stringify({'ids': ids}),
               dataType: "json",
               cache: false,
@@ -56,29 +58,26 @@ $(function(){
                 $("#msg").html(msg)
                 setTimeout(() =>{
                   window.location.href = '/dashboard'
-                },1500)
+                },1000)
               },
               error: function(jqXHR, textStatus, errorThrown){
                 $("#msg").html("<span class='flash red'>" + textStatus + " " + errorThrown + "</span>");
               }
             });
-          
-          }else{
-            bootbox.alert("Selected items cancelled for deletion")
           }
         }
 
       });    
       
     }else{
-      $("#msg").html('<span class="flash red">You must select at least one id for deletion</span>');
+      $("#msg").html('<span class="flash red">You must select at least one field for deletion</span>');
     }
   
   })
 })
 
 
-
+// Jquery function to update note
 $(function(){
   $(document).ready(function(){
     $('#modifyNote').submit(function(event){
@@ -97,6 +96,9 @@ $(function(){
         cache: false,
         success: function(mssg){
           $("#msg").html(mssg)
+          setTimeout(() =>{
+            window.location.href = '/dashboard'
+          },1000)
         },
         error: function(jqXHR, textStatus, errorThrown){
           $("#msg").html("<span class='flash red'>" + textStatus + " " + errorThrown + "</span>");
@@ -108,20 +110,31 @@ $(function(){
 })
 
 
+// Jquery function to delete note, not by checkbox selection
+$(function(){
+  $(document).ready(function(){
+    $('#deleteNote').submit(function(event){
+      event.preventDefault()
+      const ids = $("input[name='note_id']",this).val();
+      $.ajax({
+        type: "POST",
+        contentType: 'application/json;charset=UTF-8',
+        url: "/deleteNote",
+        data: JSON.stringify({'ids': ids}),
+        dataType: "json",
+        cache: false,
+        success: function(msg){
+          $("#msg").html(msg)
+          setTimeout(() =>{
+            window.location.href = '/dashboard'
+          },1000)
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+          $("#msg").html("<span class='flash red'>" + textStatus + " " + errorThrown + "</span>");
+        }
 
+      });
+    })
+  })
 
-
-// $(function(){
-//   $(document).ready(function(){
-//     $('#modifyNote').submit(function(event){
-//       event.preventDefault()
-//       const id = $("input[name='note_id']",this).val();
-//       const note = $("input[name='note']",this).val();
-//       const status = $("input[name='status']",this).serialize()
-//       console.log(id)
-//       console.log(note)
-//       console.log(status)
-//     })
-//   })
-
-// })
+})
