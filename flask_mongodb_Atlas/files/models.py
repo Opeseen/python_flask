@@ -7,3 +7,22 @@ def deleteNote(id):
         return True
     except Exception as e:
         return False
+
+def updateNote(id,notes,status):
+    try:
+        note.update_one(
+            {
+                "_id":ObjectId(id)
+            },
+            {
+                "$set":{
+                    "note":notes,
+                    "status":status
+                }
+            },
+            upsert=False
+        )
+        return True
+    except Exception as e:
+        print(e)
+        return False

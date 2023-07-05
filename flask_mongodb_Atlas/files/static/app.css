@@ -319,3 +319,10 @@ td a, td a:hover, td a:active{
   margin-left: auto;
   margin-right: auto;
 }
+
+.deleteNote.red{
+  background-color: red !important;
+  color: #fff;
+  border-radius: 10px;
+  text-transform: uppercase;
+}

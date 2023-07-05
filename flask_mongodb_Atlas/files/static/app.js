@@ -76,3 +76,52 @@ $(function(){
   
   })
 })
+
+
+
+$(function(){
+  $(document).ready(function(){
+    $('#modifyNote').submit(function(event){
+      event.preventDefault()
+      input = {}
+      input_values =  $(this).serializeArray()
+      input_values.forEach((element) =>{
+        input[element.name] = element.value
+      })
+      $.ajax({
+        type: "POST",
+        contentType: 'application/json;charset=UTF-8',
+        url: "/updateNote",
+        data: JSON.stringify({'data': input}),
+        dataType: "json",
+        cache: false,
+        success: function(mssg){
+          $("#msg").html(mssg)
+        },
+        error: function(jqXHR, textStatus, errorThrown){
+          $("#msg").html("<span class='flash red'>" + textStatus + " " + errorThrown + "</span>");
+        }
+      })
+    })
+  })
+
+})
+
+
+
+
+
+// $(function(){
+//   $(document).ready(function(){
+//     $('#modifyNote').submit(function(event){
+//       event.preventDefault()
+//       const id = $("input[name='note_id']",this).val();
+//       const note = $("input[name='note']",this).val();
+//       const status = $("input[name='status']",this).serialize()
+//       console.log(id)
+//       console.log(note)
+//       console.log(status)
+//     })
+//   })
+
+// })

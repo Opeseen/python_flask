@@ -33,7 +33,6 @@ def delete():
         payload = request.json['ids']
         if payload:
             payload = payload.split(',')
-            print(payload)
             try:
                 for id in payload:
                     models.deleteNote(id)
@@ -52,7 +51,27 @@ def delete():
 
 
 
-
+@auth.route('/updateNote',methods=['POST'])
+def update():
+    if request.method == 'POST':
+        payload = request.json['data']
+        if payload:
+            id = payload['note_id']
+            notes = payload['note'].upper()
+            status = payload['status']
+            updateNote = models.updateNote(id,notes,status)
+            if updateNote:
+                response = jsonify('<span class=\'flash green\'>Note has been successfully updated..</span>')
+                response.status_code = 200
+                return response
+            else:
+                response = jsonify('<span class=\'flash green\'>An internal error occur while updating your note</span>')
+                response.status_code = 500
+                return response
+        else:
+            response = jsonify('<span class=\'flash red\'>OOPS, something went wrong</span>')
+            response.status_code = 400
+            return response
 
 
 

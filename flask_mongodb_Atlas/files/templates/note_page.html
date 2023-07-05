@@ -1,0 +1,58 @@
+{% extends 'base.html' %} 
+{% block title %}Note Edit | Delete Page{% endblock %}
+  
+{% block content %}
+  <h2>You can either update or delete your note on this page</h2>
+  <div id="msg" class="flashMessages"></div>
+  <div class="formWrapper">
+      <form id="modifyNote" action="#" method="POST">
+        <div class="inputWrapper">
+          <div class="inputLabel">NOTE ID</div>
+          <input type="text" name="note_id" value="{{id}}" readonly/>
+        </div>
+          <div class="inputWrapper">
+            <div class="inputLabel">NOTE</div>
+            <input type="text" name="note" value="{{notes}}"/>
+          </div>
+          <div class="inputWrapper">
+              <div class="inputLabel">NOTE STATUS</div>
+              <select name="status" id="status">
+                <option value="{{status}}">{{status}}</option>
+              </select>
+            </div>
+          <div class="inputWrapper ctaWrapper">
+            <button type="submit" class="cta blue" id="updateButton">Update Note</button>
+          </div>
+        </form>
+  </div>
+  <h2>Delete Your Note</h2>
+<div class="formWrapper">
+  <form id="deleteNote" action="#" method="POST">
+    <input type="hidden" name="note_id" value="{{data.id}}"/>
+    <div class="warning">Warning: This action cannot be undone. Dont click this button on accident!</div>
+    <div class="inputWrapper ctaWrapper">
+      <button type="submit" class="cta red">Delete Note</button>
+    </div>
+  </form>
+</div>
+
+
+<script>
+const selectForm = document.getElementById("status");
+let presentFormValue
+const appendedFormValue = ['COMPLETED','UNCOMPLETED','PARTIALLY COMPLETED']
+
+for (var i = 0; i < selectForm.length; i++) {
+  const option = selectForm.options[i];
+  presentFormValue = option.value;
+}
+appendedFormValue.forEach((result) =>{
+  const addElement = document.createElement("option");
+  if(result !== presentFormValue){
+    addElement.text = result;
+    selectForm.add(addElement);
+  }
+})
+</script>
+
+{% endblock %}

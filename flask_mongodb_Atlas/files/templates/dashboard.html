@@ -10,20 +10,24 @@
       <thead>
         <tr>
           <th><input id="check_all" type="checkbox"></th>
-          <!-- <th>ID</th> -->
           <th>NOTE</th>
           <th>NOTE STATUS</th>
           <th>CREATION DATE</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         {% for rows in data() %}
               <tr>
                 <td><input type="checkbox" name="row-check" value="{{ rows['_id'] }}"></td>
-                <!-- <td>{{rows['_id']}}</td> -->
                 <td class="noteContent">{{rows['note']}}</td>
                 <td>{{rows['status']}}</td>
                 <td>{{rows['date']}}</td>
+                <td>
+                  <div class="inputWrapper ctaWrapper">
+                    <a class="deleteNote red " href="/updateNotePage?id={{rows['_id']}}">Update Note</a>
+                  </div>
+                </td>
               </tr>
         {% endfor %}
       </tbody>
