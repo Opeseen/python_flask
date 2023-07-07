@@ -147,9 +147,9 @@ $(function(){
       var self = $(this);
       var col_value = self.find("td:eq(2)").text()
       if (col_value == "COMPLETED") {
-        self.addClass('bg-success p-2 text-white');
+        self.addClass('bg-success p-2');
       }else if(col_value == "UNCOMPLETED"){
-        self.addClass('p-3 mb-2 bg-danger text-white opacity-50');
+        self.addClass('p-3 mb-2 bg-danger text-white opacity-0');
       }else{
         self.addClass("p-3 mb-2 bg-warning text-white")
       }
