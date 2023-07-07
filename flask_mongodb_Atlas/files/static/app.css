@@ -12,7 +12,7 @@ body,p,h1,h2,h3,h4,h5,h6,div,span,header,footer,img,a,a:hover,a:active,a:visited
   font-size: 12px;
   font-weight: normal;
   text-decoration: none;
-  color: #1a1a1a;
+  /* color: #1a1a1a; */
   border-width: 0;
 }
 
@@ -242,13 +242,6 @@ td{
   padding: 5px;
 }
 
-td a, td a:hover, td a:active{
-  color: #2e5fa8;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-
 
 /* Flash messages flashing section */
 
@@ -330,4 +323,5 @@ td a, td a:hover, td a:active{
 
 td.tableContent{
   font-weight:bold;
+  /* color: #fff; */
 }
