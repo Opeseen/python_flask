@@ -19,9 +19,9 @@
         {% for rows in data() %}
               <tr>
                 <td><input type="checkbox" name="row-check" value="{{ rows['_id'] }}"></td>
-                <td class="noteContent">{{rows['note']}}</td>
-                <td>{{rows['status']}}</td>
-                <td>{{rows['date']}}</td>
+                <td class="noteContent tableContent">{{rows['note']}}</td>
+                <td class="tableContent">{{rows['status']}}</td>
+                <td class="tableContent">{{rows['date']}}</td>
                 <td>
                   <div class='delete btn btn-danger'>
                     <a class="deleteNoteLink red" href="/updateNotePage?id={{rows['_id']}}">Update Note</a>
@@ -35,6 +35,5 @@
   <div class="inputWrapper ctaWrapper">
     <a class="modifyNote green" href="/download"> Download to csv</a>
     <button class="modifyNote red" id="deleteNoteBySelection">Delete Selection</button>
-
   </div>
 {% endblock %}

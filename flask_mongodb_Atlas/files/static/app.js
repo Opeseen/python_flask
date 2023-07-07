@@ -138,3 +138,21 @@ $(function(){
   })
 
 })
+
+// Jquery function to style note based on certain condition
+$(function(){
+  $(document).ready(function() {
+    var dataTable = $('#myTable').dataTable()
+    $(dataTable.fnGetNodes()).each(function(){
+      var self = $(this);
+      var col_value = self.find("td:eq(2)").text()
+      if (col_value == "COMPLETED") {
+        self.addClass("p-3 mb-2 bg-success text-white");
+      }else if(col_value == "UNCOMPLETED"){
+        self.addClass("p-3 mb-2 bg-danger text-white");
+      }else{
+        self.addClass("p-3 mb-2 bg-warning text-white")
+      }
+    })
+  });
+})
