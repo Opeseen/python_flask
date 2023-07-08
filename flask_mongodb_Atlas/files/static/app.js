@@ -147,11 +147,11 @@ $(function(){
       var self = $(this);
       var col_value = self.find("td:eq(2)").text()
       if (col_value == "COMPLETED") {
-        self.addClass('bg-success p-2');
+        self.addClass('bg-success');
       }else if(col_value == "UNCOMPLETED"){
-        self.addClass('p-3 mb-2 bg-danger text-white opacity-0');
+        self.addClass('bg-danger');
       }else{
-        self.addClass("p-3 mb-2 bg-warning text-white")
+        self.addClass("bg-warning")
       }
     })
   });
