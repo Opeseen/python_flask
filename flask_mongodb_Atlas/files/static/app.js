@@ -70,7 +70,7 @@ $(function(){
       });    
       
     }else{
-      $("#msg").html('<span class="flash red">You must select at least one field for deletion</span>');
+      $("#msg").html('<span class="flash red">You must select at least a checkbox for deletion</span>');
     }
   
   })

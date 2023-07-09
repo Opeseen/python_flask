@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for rows in data() %}
+        {% for rows in data %}
               <tr>
                 <td><input type="checkbox" name="row-check" value="{{ rows['_id'] }}"></td>
                 <td class="noteContent tableContent">{{rows['note']}}</td>
