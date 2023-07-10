@@ -65,7 +65,7 @@ def updateNote():
                 response.status_code = 200
                 return response
             else:
-                response = jsonify('<span class=\'flash green\'>An internal error occur while updating your note</span>')
+                response = jsonify('<span class=\'flash red\'>An internal error occur while updating your note</span>')
                 response.status_code = 500
                 return response
         else:

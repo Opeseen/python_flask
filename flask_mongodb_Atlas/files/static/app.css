@@ -313,7 +313,7 @@ td{
   margin-right: auto;
 }
 
-.deleteNoteLink.red{
+.updateNoteLink.red{
   color: #fff;
   text-transform: uppercase;
   /* font-weight: bold; */
