@@ -58,7 +58,7 @@ $(function(){
                 $("#msg").html(msg)
                 setTimeout(() =>{
                   window.location.href = '/dashboard'
-                },1000)
+                },500)
               },
               error: function(jqXHR, textStatus, errorThrown){
                 $("#msg").html("<span class='flash red'>" + textStatus + " " + errorThrown + "</span>");
@@ -98,7 +98,7 @@ $(function(){
           $("#msg").html(mssg)
           setTimeout(() =>{
             window.location.href = '/dashboard'
-          },1000)
+          },500)
         },
         error: function(jqXHR, textStatus, errorThrown){
           $("#msg").html("<span class='flash red'>" + textStatus + " " + errorThrown + "</span>");
@@ -127,7 +127,7 @@ $(function(){
           $("#msg").html(msg)
           setTimeout(() =>{
             window.location.href = '/dashboard'
-          },1000)
+          },500)
         },
         error: function(jqXHR, textStatus, errorThrown){
           $("#msg").html("<span class='flash red'>" + textStatus + " " + errorThrown + "</span>");
