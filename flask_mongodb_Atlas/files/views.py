@@ -38,14 +38,22 @@ def download():
 def updateNotePage():
     queryID = request.args.get('id')
     if queryID:
-        result = noteCollection.find({"_id":ObjectId(queryID)})
-        for x in result:
-            status = x['status']
-            id = x['_id']
-            notes = x['note']
-    return render_template('note_page.html', status=status,id=id,notes=notes)
+        try:
+            result = noteCollection.find({"_id":ObjectId(queryID)})
+            for x in result:
+                status = x['status']
+                id = x['_id']
+                notes = x['note']
+                return render_template('note_page.html', status=status,id=id,notes=notes)
+        except Exception as e:
+            flash('Internal error... No record found',category='error')
+            return render_template('note_page.html')
+        flash('no record found',category='error')
+        return render_template('note_page.html')
+    return render_template('note_page.html')
+            
 
-
+    
 
 
 # def getNote():
