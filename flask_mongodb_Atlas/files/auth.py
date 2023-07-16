@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify;
+from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify, make_response;
 from datetime import datetime;
 from . import noteCollection;
 from pymongo import errors;
@@ -20,9 +20,14 @@ def create_note():
                 date = now.strftime("%B %d, %Y %H:%M:%S")
                 noteCollection.insert_one({'note':NOTE, 'status':defaultNoteStatus , 'date':date})
                 flash(' Note Successfully Added.',category='success')
-                return redirect(url_for('auth.create_note'))
+                response = make_response(render_template('create_note.html'), 201)
+                response.headers["Content-Type"] = "text/html"
+                return response
             except Exception as e:
-                flash('Error Encountered while adding your note... Contact Admin Support',category='error')
+                flash('Error Encountered while adding your note - Contact Admin Support',category='error')
+                response = make_response(render_template('create_note.html'), 400)
+                response.headers["Content-Type"] = "text/html"
+                return response
     
     return render_template('create_note.html')
 

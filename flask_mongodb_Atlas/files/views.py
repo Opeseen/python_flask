@@ -28,6 +28,7 @@ def download():
         response = make_response(df.to_csv(index=False))
         response.headers["Content-Disposition"] = "attachment; filename=data.csv"
         response.headers["Content-Type"] = "text/csv"
+        response.status_code = 201
         return response
     else:
         error = "cound not download the note"
