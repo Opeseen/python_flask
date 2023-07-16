@@ -146,9 +146,9 @@ $(function(){
     $(dataTable.fnGetNodes()).each(function(){
       var self = $(this);
       var col_value = self.find("td:eq(2)").text()
-      if (col_value == "COMPLETED") {
+      if (col_value === "COMPLETED") {
         self.addClass('bg-success');
-      }else if(col_value == "UNCOMPLETED"){
+      }else if(col_value === "UNCOMPLETED"){
         self.addClass('bg-danger');
       }else{
         self.addClass("bg-warning")
