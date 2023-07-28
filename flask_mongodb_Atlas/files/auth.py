@@ -19,7 +19,7 @@ def create_note():
                 now = datetime.now()
                 date = now.strftime("%B %d, %Y %H:%M:%S")
                 noteCollection.insert_one({'note':NOTE, 'status':defaultNoteStatus , 'date':date})
-                flash(' Note Successfully Added.',category='success')
+                flash(' Note Successfully Added',category='success')
                 response = make_response(render_template('create_note.html'), 201)
                 response.headers["Content-Type"] = "text/html"
                 return response
@@ -66,7 +66,7 @@ def updateNote():
             status = payload['status']
             updateNote = models.updateNote(id,notes,status)
             if updateNote:
-                response = jsonify('<span class=\'flash green\'>Note has been successfully updated.</span>')
+                response = jsonify('<span class=\'flash green\'>Note has been successfully updated</span>')
                 response.status_code = 200
                 return response
             else:
