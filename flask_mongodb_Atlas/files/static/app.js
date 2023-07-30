@@ -28,7 +28,7 @@ $(function(){
       ids = ids + comma + this.value;
       comma = ',';   
     });
-    
+
     if(ids.length > 0){
       // Bootbox confirm box for delete
       bootbox.confirm({
@@ -68,7 +68,7 @@ $(function(){
         }
 
       });    
-      
+
     }else{
       $("#msg").html('<span class="flash red">You must select at least a checkbox for deletion</span>');
     }
