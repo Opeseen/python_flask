@@ -39,11 +39,9 @@ def deleteNote():
         if payload:
             payload = payload.split(',')
             try:
-                for id in payload:
-                    models.deleteNote(id)
-                response = jsonify('<span class=\'flash green\'>Note has been successfully deleted</span>')
-                response.status_code = 200
-                return response
+                for i in range(500):
+                    print("%d" % i)
+                    
             except Exception as e:
                 response = jsonify('<span class=\'flash red\'>OOPS, an internal error occur during deletion</span>')
                 response.status_code = 500
