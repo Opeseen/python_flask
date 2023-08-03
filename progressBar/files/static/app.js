@@ -55,6 +55,12 @@ $(function(){
               dataType: "json",
               cache: false,
               success: function(msg){
+                var percentage = 0;
+                var timer = setInterval(function(){
+                  percentage = percentage + 20;
+                  progress_bar_process(percentage, timer,data);
+                 }, 1000);
+
                 $("#msg").html(msg)
                 setTimeout(() =>{
                   window.location.href = '/dashboard'
@@ -64,7 +70,9 @@ $(function(){
                 $("#msg").html("<span class='flash red'>" + textStatus + " " + errorThrown + "</span>");
               }
             });
+
           }
+
         }
 
       });    
@@ -72,7 +80,18 @@ $(function(){
     }else{
       $("#msg").html('<span class="flash red">You must select at least a checkbox for deletion</span>');
     }
-  
+    
+    
+    function progress_bar_process(percentage, timer,data){
+      $('.progress-bar').css('width', percentage + '%');
+      if(percentage > 100){
+        clearInterval(timer);
+        $('#sample_form')[0].reset();
+        $('#process').css('display', 'none');
+        $('.progress-bar').css('width', '0%');
+      }
+    }
+
   })
 })
 
@@ -156,3 +175,4 @@ $(function(){
     })
   });
 })
+

@@ -39,9 +39,11 @@ def deleteNote():
         if payload:
             payload = payload.split(',')
             try:
-                for i in range(500):
-                    print("%d" % i)
-                    
+                for id in payload:
+                    models.deleteNote(id)
+                    response = jsonify('<span class=\'flash green\'>Note has been successfully deleted</span>')
+                    response.status_code = 200
+                return response
             except Exception as e:
                 response = jsonify('<span class=\'flash red\'>OOPS, an internal error occur during deletion</span>')
                 response.status_code = 500
@@ -51,6 +53,7 @@ def deleteNote():
             response = jsonify('<span class=\'flash red\'>OOPS, something went wrong</span>')
             response.status_code = 400
             return response
+
 
 
 # Route function to update note
@@ -75,3 +78,7 @@ def updateNote():
             response = jsonify('<span class=\'flash red\'>OOPS, something went wrong</span>')
             response.status_code = 400
             return response
+
+
+
+        

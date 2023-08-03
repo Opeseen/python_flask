@@ -41,8 +41,8 @@ def deleteNote():
             try:
                 for id in payload:
                     models.deleteNote(id)
-                response = jsonify('<span class=\'flash green\'>Note has been successfully deleted</span>')
-                response.status_code = 200
+                    response = jsonify('<span class=\'flash green\'>Note has been successfully deleted</span>')
+                    response.status_code = 200
                 return response
             except Exception as e:
                 response = jsonify('<span class=\'flash red\'>OOPS, an internal error occur during deletion</span>')
@@ -53,7 +53,6 @@ def deleteNote():
             response = jsonify('<span class=\'flash red\'>OOPS, something went wrong</span>')
             response.status_code = 400
             return response
-
 
 # Route function to update note
 @auth.route('/updateNote',methods=['POST'])
