@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <!-- General Settings -->
+    <meta charset="utf-8">
+    <meta http-equiv="content-language" content="en-us">
+
+    <!-- Meta Tags -->
+    <title>{% block title %}WELCOME{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+      rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Static Assets -->
+    <link rel="icon" href="{{ url_for('static',filename='logo.png') }}" sizes="32x32" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="static/app.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/6.0.0/bootbox.min.js" 
+      integrity="sha512-oVbWSv2O4y1UzvExJMHaHcaib4wsBMS5tEP3/YkMP6GmkwRJAa79Jwsv+Y/w7w2Vb/98/Xhvck10LyJweB8Jsw==" 
+      crossorigin="anonymous" referrerpolicy="no-referrer">
+    </script>
+    
+  </head>
+  <body>
+    <!-- Page Wrapper -->
+    <div class="wrapper">
+      <!-- Header -->
+      <div class="header" id="myHeader">
+        <!-- Logo -->
+        <a class="logo" href="/">
+          <img src="{{ url_for('static',filename='logo.png') }}" alt="Logo" />
+        </a>
+        <!-- Navigation -->
+        <ul class="menu">
+
+          <li> <a href="/">HOME</a> </li>
+          <li>
+            <a href="/dashboard">DASHBOARD</a>
+          </li>
+          <li>
+            <a href="/create_note">CREATE NOTE</a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <!-- Page-Specific Content -->
+      <div class="content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+              {% for category, message in messages %}
+                {% if category == 'error' %}
+                <div class="flashMessages">
+                  <p class="flash red">{{message}}</p>
+                  <br>
+                </div>       
+                {% else %}
+                <div class="flashMessages">
+                  <p class="flash green">{{message}}</p>
+                  <br>
+                </div>          
+                {% endif %}
+              {% endfor %}
+          {% endif %}
+        {% endwith %}
+        <!-- Opening text body section -->
+        {% block content %}
+      
+        {% endblock %}
+        <!-- Closing text body section -->
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <div class="copyright">Copyright | Opeyemi | All Rights Reserved</div>
+      </div>
+    </div>
+      <script>
+        $(document).ready( function (){
+          $('#myTable').DataTable();
+        });       
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+      </script>
+      <script
+        type="text/javascript" src="{{ url_for('static', filename='app.js') }}">
+      </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+{% extends 'base.html' %} 
+{% block title %}Dashboard Page{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h3 style="color: brown; text-align: center;">WELCOME TO YOUR NOTE DASHBOARD</h3>
+    <div id="msg" class="flashMessages"></div>
+    <table class="table table-fluid" id="myTable">
+      <thead>
+        <tr>
+          <th><input id="check_all" type="checkbox"></th>
+          <th>NOTE</th>
+          <th>NOTE STATUS</th>
+          <th>CREATION DATE</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for rows in data %}
+              <tr>
+                <td><input type="checkbox" name="row-check" value="{{ rows['_id'] }}"></td>
+                <td class="noteContent tableContent">{{rows['note']}}</td>
+                <td class="tableContent">{{rows['status']}}</td>
+                <td class="tableContent">{{rows['date']}}</td>
+                <td>
+                  <div class='update btn btn-danger'>
+                    <a class="updateNoteLink red" href="/updateNotePage?id={{rows['_id']}}">Update Note</a>
+                  </div>
+                </td>
+              </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="inputWrapper ctaWrapper">
+    <a class="modifyNote green" href="/download"> Download to csv</a>
+    <button class="modifyNote red" id="deleteNoteBySelection">Delete Selection</button>
+  </div>
+{% endblock %}
