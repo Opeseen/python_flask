@@ -28,11 +28,13 @@ $(function(){
       ids = ids + comma + this.value;
       comma = ',';   
     });
-
+    splitIds = ids.split(",")
+    const confirmDeletionTitle = "are you suer you want to delete the selected note?"
+    const confirmDeletion = splitIds.length > 1 ? `${splitIds.length} items selected - ${confirmDeletionTitle}` : confirmDeletionTitle;
     if(ids.length > 0){
       // Bootbox confirm box for delete
       bootbox.confirm({
-        title: 'ARE YOU SURE YOU WANT TO DELETE THE SELECTED NOTE.',
+        title: confirmDeletion.toUpperCase(),
         message:'<p class="text-danger font-weight-bold text-uppercase">Warning: This will delete permanently and cannot be undone</p>',
         buttons:{
           confirm:{
