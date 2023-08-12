@@ -54,6 +54,8 @@ def deleteNote():
             response.status_code = 400
             return response
 
+
+
 # Route function to update note
 @auth.route('/updateNote',methods=['POST'])
 def updateNote():
@@ -76,3 +78,7 @@ def updateNote():
             response = jsonify('<span class=\'flash red\'>OOPS, something went wrong</span>')
             response.status_code = 400
             return response
+
+
+
+        
