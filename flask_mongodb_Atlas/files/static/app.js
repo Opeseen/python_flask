@@ -29,12 +29,12 @@ $(function(){
       comma = ',';   
     });
     splitIds = ids.split(",")
-    const confirmDeletionTitle = "are you suer you want to delete the selected note?"
-    const confirmDeletion = splitIds.length > 1 ? `${splitIds.length} items selected - ${confirmDeletionTitle}` : confirmDeletionTitle;
+    const confirmDeletion = "are you sure you want to delete the selected note?"
+    const confirmDeletionTitle = splitIds.length > 1 ? `${splitIds.length} items selected - ${confirmDeletion}` : confirmDeletion;
     if(ids.length > 0){
       // Bootbox confirm box for delete
       bootbox.confirm({
-        title: confirmDeletion.toUpperCase(),
+        title: confirmDeletionTitle.toUpperCase(),
         message:'<p class="text-danger font-weight-bold text-uppercase">Warning: This will delete permanently and cannot be undone</p>',
         buttons:{
           confirm:{
