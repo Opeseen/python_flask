@@ -55,12 +55,6 @@ $(function(){
               dataType: "json",
               cache: false,
               success: function(msg){
-                var percentage = 0;
-                var timer = setInterval(function(){
-                  percentage = percentage + 20;
-                  progress_bar_process(percentage, timer,data);
-                 }, 1000);
-
                 $("#msg").html(msg)
                 setTimeout(() =>{
                   window.location.href = '/dashboard'
