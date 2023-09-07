@@ -221,7 +221,7 @@ table{
 }
 
 tr{
-  width: 100%;
+  width: 120%;
 }
 
 th{
@@ -274,6 +274,9 @@ td{
   width: 500px;
 }
 
+.dateContent{
+  width: 130px;
+}
 .modifyNote.red{
   background-color: #ff0000c5 !important;
   color: #fff;
