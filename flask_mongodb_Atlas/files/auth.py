@@ -61,7 +61,7 @@ def updateNote():
         payload = request.json['data']
         if payload:
             id = payload['note_id']
-            notes = payload['note'].upper()
+            notes = payload['note'].upper().strip()
             status = payload['status']
             updateNote = models.updateNote(id,notes,status)
             if updateNote:
