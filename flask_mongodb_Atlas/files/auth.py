@@ -63,15 +63,20 @@ def updateNote():
             id = payload['note_id']
             notes = payload['note'].upper().strip()
             status = payload['status']
-            updateNote = models.updateNote(id,notes,status)
-            if updateNote:
-                response = jsonify('<span class=\'flash green\'>Note has been successfully updated</span>')
-                response.status_code = 200
+            if len(notes) > 150:
+                response = jsonify('<span class=\'flash red\'>Length of Note can not be greater than 150 Characters</span>')
+                response.status_code = 400
                 return response
             else:
-                response = jsonify('<span class=\'flash red\'>An internal error occur while updating your note</span>')
-                response.status_code = 500
-                return response
+                updateNote = models.updateNote(id,notes,status)
+                if updateNote:
+                    response = jsonify('<span class=\'flash green\'>Note has been successfully updated</span>')
+                    response.status_code = 200
+                    return response
+                else:
+                    response = jsonify('<span class=\'flash red\'>An internal error occur while updating your note</span>')
+                    response.status_code = 500
+                    return response  
         else:
             response = jsonify('<span class=\'flash red\'>OOPS, something went wrong</span>')
             response.status_code = 400
