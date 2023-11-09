@@ -102,8 +102,8 @@ $(function(){
             window.location.href = '/dashboard'
           },500)
         },
-        error: function(jqXHR, textStatus, errorThrown){
-          $("#msg").html("<span class='flash red'>" + textStatus + " " + errorThrown + "</span>");
+        error: function(xhr, textStatus, errorThrown){
+          $("#msg").html(JSON.parse(xhr.responseText));
         }
       })
     })
@@ -131,7 +131,7 @@ $(function(){
             window.location.href = '/dashboard'
           },500)
         },
-        error: function(jqXHR, textStatus, errorThrown){
+        error: function(jqXHR, textStatus, errorThrown){         
           $("#msg").html("<span class='flash red'>" + textStatus + " " + errorThrown + "</span>");
         }
 

@@ -64,7 +64,7 @@ def updateNote():
             notes = payload['note'].upper().strip()
             status = payload['status']
             if len(notes) > 150:
-                response = jsonify('<span class=\'flash red\'>Length of Note can not be greater than 150 Characters</span>')
+                response = jsonify('<span class=\'flash red\'>Length of Note can\'t be greater than 150 Characters</span>')
                 response.status_code = 400
                 return response
             else:
